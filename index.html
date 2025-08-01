@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8" />
+       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <title>NeanderWeb-V</title>
+   			<link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+       <div class="top-bar">
+           <div class="menu-item" id="file">
+               File
+               <div class="dropdown">
+                   <button>Load</button>
+                   <button>Save</button>
+               </div>
+           </div>
+           <div class="menu-item" id="view">
+               View
+               <div class="dropdown">
+                   <button id="btnHex">Hexadecimal</button>
+                   <button id="btnDec">Decimal</button>
+               </div>
+           </div>
+           <div class="menu-item" id="run">
+               Run
+               <div class="dropdown">
+                   <button id="btnRunProg">Run Program</button>
+                   <button id="btnStep">Step‑by‑Step</button>
+                   <button id="btnClear">Clear</button>
+               </div>
+           </div>
+           <div class="menu-item" id="help-btn">Help</div>
+           <div class="menu-item" id="about-btn">About</div>
+           <button class="language-switch" id="language-switch">EN</button>
+       </div>
+
+       <main class="main-content">
+           <div class="editors">
+               <div class="editor-container">
+                   <div id="output-left" class="line-counter"></div>
+                   <textarea id="input-left" class="textarea-input" spellcheck="false"></textarea>
+                   <pre id="highlighting-area" class="textarea-highlight" aria-hidden="true"><code></code></pre>
+               </div>
+
+               <div id="memory-grid-container" class="memory-grid-container">
+                   </div>
+           </div>
+
+           <div class="status-container">
+               <div class="status-box">
+                   <span id="base-display">DEC</span>
+               </div>
+               <div class="status-box flag-box" id="n-flag-box">
+                   <label>N</label>
+               </div>
+               <div class="status-box flag-box" id="z-flag-box">
+                   <label>Z</label>
+               </div>
+               <div class="status-box">
+                   <label for="ac-value">AC</label>
+                   <span id="ac-value">0</span>
+               </div>
+               <div class="status-box">
+                   <label for="pc-value">PC</label>
+                   <span id="pc-value">0</span>
+               </div>
+               <div class="status-box vector-box">
+                   <label for="vac-value">VAC</label>
+                   <span id="vac-value">[0, 0, 0, 0]</span>
+               </div>
+               <div id="step-controls" class="step-controls">
+                   <button id="btnStopStep" title="Stop">■</button>
+                   <button id="btnNext" title="Next">→</button>
+               </div>
+           </div>
+
+           <div class="cache-container">
+               <div class="cache-box">
+                   <div class="cache-title">I-Cache (8 bytes)</div>
+                   <div class="cache-stats">
+                       <span>Hits: <span id="icache-hits">0</span></span>
+                       <span>Misses: <span id="icache-misses">0</span></span>
+                   </div>
+                   <div class="cache-line">
+                       <span>Tag: <span id="icache-tag">-</span></span>
+                       <span>Data: <span id="icache-data">[...]</span></span>
+                   </div>
+               </div>
+               <div class="cache-box">
+                   <div class="cache-title">D-Cache (16 bytes)</div>
+                   <div class="cache-stats">
+                       <span>Hits: <span id="dcache-hits">0</span></span>
+                       <span>Misses: <span id="dcache-misses">0</span></span>
+                   </div>
+                   <div class="cache-line">
+                       <span>Tag: <span id="dcache-tag">-</span></span>
+                       <span>Data: <span id="dcache-data">[...]</span></span>
+                   </div>
+               </div>
+           </div>
+
+           <div id="log-container" class="log-container"></div>
+       </main>
+
+       <div class="about-modal" id="about-modal">
+           <button class="close-button" id="close-about">X</button>
+           <p class="about-info">
+               <span class="about-name">NeanderWeb-V 1.0.0</span><br />
+               <span class="about-author">JPRL - 2025</span>
+           </p>
+       </div>
+
+       <div class="about-modal" id="help-modal">
+           <button class="close-button" id="close-help">X</button>
+           <h2 id="help-title" style="text-align: center; margin-bottom: 15px;"></h2>
+           <div id="help-content"></div>
+       </div>
+
+       <div class="overlay" id="overlay"></div>
+   	<script src="script.js"></script>
+   </body>
+</html>
